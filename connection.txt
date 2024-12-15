@@ -1,0 +1,98 @@
+Below are the pin connections for the components in your "Eemo" AI assistant speaker box using an ESP32.
+
+1. OLED Display (I2C)
+
+VCC → 3.3V (ESP32 pin)
+
+GND → GND (ESP32 pin)
+
+SCL → GPIO 22 (ESP32 pin) (I2C Clock)
+
+SDA → GPIO 21 (ESP32 pin) (I2C Data)
+
+
+2. RGB LED (4 Pins: Red, Green, Blue, GND)
+
+Red Pin (R) → GPIO 25 (ESP32 pin)
+
+Green Pin (G) → GPIO 26 (ESP32 pin)
+
+Blue Pin (B) → GPIO 27 (ESP32 pin)
+
+GND Pin → GND (ESP32 pin)
+
+
+3. PAM8406 Amplifier
+
+VCC (Power) → 5V (ESP32 pin)
+
+GND (Ground) → GND (ESP32 pin)
+
+IN+ (Input +) → Audio input (Could be connected to I2S output or microphone module depending on setup)
+
+IN- (Input -) → GND (Ground or I2S input depending on design)
+
+OUT+ (Output +) → Speaker (+)
+
+OUT- (Output -) → Speaker (-)
+
+
+4. 3W Speaker
+
+Positive terminal (+) → OUT+ of PAM8406 (Amplifier output)
+
+Negative terminal (-) → OUT- of PAM8406 (Amplifier output)
+
+
+5. MAX4466 Microphone Module
+
+VCC → 3.3V (ESP32 pin)
+
+GND → GND (ESP32 pin)
+
+OUT (Signal) → MIC_PIN (GPIO 34) (ESP32 pin, used for analog microphone input)
+
+
+6. Buttons
+
+Play/Pause Button (PIN 32)
+
+Pin 32 → Digital input (with INPUT_PULLUP configuration)
+
+Connect one leg of the button to GPIO 32 and the other leg to GND
+
+
+Volume Up Button (PIN 33)
+
+Pin 33 → Digital input (with INPUT_PULLUP configuration)
+
+Connect one leg of the button to GPIO 33 and the other leg to GND
+
+
+Volume Down Button (PIN 35)
+
+Pin 35 → Digital input (with INPUT_PULLUP configuration)
+
+Connect one leg of the button to GPIO 35 and the other leg to GND
+
+
+
+7. Bluetooth Communication
+
+For Bluetooth communication, you don't need specific physical connections, as it uses the ESP32's built-in Bluetooth functionality (ESP32 is equipped with Bluetooth, so there are no external pins for this).
+
+8. I2S (for Audio Output)
+
+For audio output via PAM8406 amplifier, we can use the ESP32’s I2S interface. In your code, the I2S pins are defined as follows:
+
+I2S Data Out (I2S_DOUT) → GPIO 22 (ESP32 pin)
+
+I2S Bit Clock (I2S_BCLK) → GPIO 23 (ESP32 pin)
+
+I2S Left Right Clock (I2S_LRC) → GPIO 21 (ESP32 pin)
+
+
+Summary of Pin Assignments:
+
+These connections should ensure that the components interact correctly with the ESP32 and work as expected in the AI assistant speaker box project.
+
